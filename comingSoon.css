@@ -300,7 +300,8 @@ input:focus,input:not(:placeholder-shown){
 }
 .DateOfRelease{
     margin-right: 235px;
-     background-color: rgb(252, 217, 22);
+/*      background-color: rgb(252, 217, 22); */
+     background-color: #64ffda;
     margin-left: 230px;
     color: rgb(0, 0, 0);
     text-decoration:underline;
