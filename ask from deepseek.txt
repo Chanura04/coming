@@ -1,0 +1,233 @@
+give me a attractive animation with css to  description of a coming soon films in a page .that should include film image and some details ,like artist and some details ...like this code <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details - Cyber Odyssey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #fff;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .movie-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+            animation: slideUp 1s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .poster-container {
+            flex: 0 0 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .poster-container:hover {
+            transform: scale(1.05);
+        }
+
+        .poster {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .movie-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .details-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            color: #ccc;
+        }
+
+        .rating {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .genre {
+            background: rgba(255,255,255,0.1);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+        }
+
+        .description {
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .cast-container {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .cast-member {
+            flex: 0 0 100px;
+            text-align: center;
+        }
+
+        .cast-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cast-member:hover img {
+            transform: scale(1.1);
+        }
+
+        .button-group {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #e50914;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .movie-card {
+                flex-direction: column;
+            }
+            
+            .poster-container {
+                flex: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="movie-card">
+            <div class="poster-container">
+                <img src="https://source.unsplash.com/random/300x450?sig=1" alt="Movie Poster" class="poster">
+            </div>
+            <div class="content">
+                <h1 class="movie-title">Cyber Odyssey 2077</h1>
+                <div class="details-row">
+                    <span class="rating">⭐ 8.5/10</span>
+                    <span class="genre">Sci-Fi</span>
+                    <span class="genre">Action</span>
+                    <span class="duration">🕒 2h 28m</span>
+                </div>
+                <p class="description">
+                    In a dystopian future where humanity's last hope lies in digital consciousness, 
+                    a rogue hacker must navigate the dangerous virtual world to prevent the collapse 
+                    of reality itself. Packed with stunning visuals and mind-bending plot twists.
+                </p>
+
+                <h2>Cast</h2>
+                <div class="cast-container">
+                    <div class="cast-member">
+                        <img src="https://source.unsplash.com/random/100x100?face1" alt="Actor">
+                        <div>John Smith</div>
+                    </div>
+                    <div class="cast-member">
+                        <img src="https://source.unsplash.com/random/100x100?face2" alt="Actor">
+                        <div>Sarah Johnson</div>
+                    </div>
+                    <div class="cast-member">
+                        <img src="https://source.unsplash.com/random/100x100?face3" alt="Actor">
+                        <div>Michael Chen</div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary">▶ Watch Trailer</button>
+                    <button class="btn btn-secondary">❤ Add to Favorites</button>
+                </div>
+
+                <div class="tech-specs">
+                    <h3>Technical Specs</h3>
+                    <div class="details-row">
+                        <span>Resolution: 4K Ultra HD</span>
+                        <span>Audio: Dolby Atmos</span>
+                        <span>Aspect Ratio: 2.39:1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

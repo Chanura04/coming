@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - Cosmic Revolution</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63);
+            color: #fff;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .film-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+            animation: slideUp 1s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .film-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 4s infinite;
+        }
+
+        .poster-container {
+            flex: 0 0 350px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .poster-container:hover {
+            transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+        }
+
+        .poster {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            animation: posterGlow 3s ease-in-out infinite;
+        }
+
+        .content {
+            flex: 1;
+            position: relative;
+        }
+
+        .film-title {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleFlow 4s infinite alternate;
+        }
+
+        .release-date {
+            color: #64ffda;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .details-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            color: #ccc;
+        }
+
+        .genre-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .genre-tag:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .description {
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #ccd6f6;
+        }
+
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cast-member {
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .cast-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .cast-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .cast-member:hover img {
+            border-color: #ff6b6b;
+            transform: scale(1.1);
+        }
+
+        .countdown {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffd93d;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            color: #0f0c29;
+            animation: buttonGlow 2s infinite;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shine {
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        @keyframes posterGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,107,107,0.3); }
+            50% { box-shadow: 0 0 40px rgba(255,217,61,0.5); }
+        }
+
+        @keyframes titleFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes buttonGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(255,107,107,0.5); }
+            50% { box-shadow: 0 0 20px rgba(255,217,61,0.7); }
+        }
+
+        @media (max-width: 768px) {
+            .film-card {
+                flex-direction: column;
+            }
+            
+            .poster-container {
+                flex: none;
+                width: 100%;
+            }
+            
+            .film-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="film-card">
+            <div class="poster-container">
+                <img src="https://source.unsplash.com/random/800x1200?scifi-movie" alt="Movie Poster" class="poster">
+            </div>
+            <div class="content">
+                <h1 class="film-title">Cosmic Revolution</h1>
+                <div class="release-date">Coming December 15, 2024</div>
+                
+                <div class="details-row">
+                    <span class="genre-tag">Sci-Fi</span>
+                    <span class="genre-tag">Adventure</span>
+                    <span class="genre-tag">Action</span>
+                </div>
+
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number">45</div>
+                        <div>Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number">12</div>
+                        <div>Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number">30</div>
+                        <div>Minutes</div>
+                    </div>
+                </div>
+
+                <p class="description">
+                    In the year 2147, a group of interstellar rebels discovers a hidden power 
+                    that could change the fate of the galaxy. As cosmic forces collide, they 
+                    must navigate through wormholes and alien civilizations to prevent the 
+                    annihilation of humanity. Prepare for a visual spectacle across the cosmos!
+                </p>
+
+                <h3>Starring</h3>
+                <div class="cast-grid">
+                    <div class="cast-member">
+                        <img src="https://source.unsplash.com/random/100x100?actor1" alt="Actor">
+                        <div>Emma Specter</div>
+                    </div>
+                    <div class="cast-member">
+                        <img src="https://source.unsplash.com/random/100x100?actor2" alt="Actor">
+                        <div>Ryan Cosmos</div>
+                    </div>
+                    <div class="cast-member">
+                        <img src="https://source.unsplash.com/random/100x100?actor3" alt="Actor">
+                        <div>Zara Quasar</div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary">🎬 Watch Teaser</button>
+                    <button class="btn btn-secondary">🔔 Notify Me</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
